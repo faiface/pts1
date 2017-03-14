@@ -7,11 +7,13 @@ def protected(password):
                 if user_password == password:
                     break
                 print("Invalid password.")
+                attempts -= 1
             else:
                 print("3 incorrect attempts.")
                 return
             f(*args, **kwargs)
-        return decorator
+        return wrapper
+    return decorator
 
 class Player:
     def __init__(self, name, score, junior):
@@ -43,8 +45,9 @@ def junior(players, name):
             break
 
 def ranking(players):
-    for player in sorted(players, key=lambda p: p.score, reverse=True):
-        print("{:4}: {} ({})".format(
+    for i, player in enumerate(sorted(players, key=lambda p: p.score, reverse=True)):
+        print("{:2}. {:4}, {} ({})".format(
+            i+1,
             player.score,
             player.name,
             "junior" if player.junior else "senior",
@@ -57,7 +60,7 @@ if __name__ == "__main__":
     players = []
 
     while True:
-        inp = input().split()
+        inp = input("> ").split()
         command = inp[0]
 
         if command == "points":
