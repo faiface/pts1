@@ -1,4 +1,7 @@
+import sys
+
 def protected(password):
+    """Requests the user to input the password before running decorated function."""
     def decorator(f):
         def wrapper(*args, **kwargs):
             attempts = 3
@@ -16,6 +19,7 @@ def protected(password):
     return decorator
 
 class Player:
+    """Stores name, score and junior attributes of a player."""
     def __init__(self, name, score, junior):
         self.name = name
         self.score = score
@@ -25,6 +29,7 @@ password = "principlesandpracticeofinfectiousdiseases"
 
 @protected(password)
 def points(players, name, score):
+    """Adds given score to the exising score of the player with given name or creates a new player."""
     for player in players:
         if player.name == name:
             player.score += score
@@ -34,17 +39,20 @@ def points(players, name, score):
 
 @protected(password)
 def reduce(players, score):
+    """Reduces scores of all players by given score."""
     for player in players:
         player.score -= score
 
 @protected(password)
 def junior(players, name):
+    """Sets the player with given name as a junior."""
     for player in players:
         if player.name == name:
             player.junior = True
             break
 
 def ranking(players):
+    """Prints a nice table of all players sorted by their score."""
     for i, player in enumerate(sorted(players, key=lambda p: p.score, reverse=True)):
         print("{:2}. {:4}, {} ({})".format(
             i+1,
@@ -54,7 +62,14 @@ def ranking(players):
         ))
 
 def ranking_junior(players):
+    """Prints a nice table of all junior players sorted by their score."""
     ranking(filter(lambda p: p.junior, players))
+
+@protected(password)
+def quit():
+    """Exits the program."""
+    sys.exit(0)
+
 
 if __name__ == "__main__":
     players = []
@@ -75,6 +90,6 @@ if __name__ == "__main__":
             else:
                 ranking(players)
         elif command == "quit":
-            break
+            quit()
         else:
             print("Unknown command: {}".format(command))
