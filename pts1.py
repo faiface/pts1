@@ -1,3 +1,5 @@
+from collections import namedtuple
+
 def protected(password):
     def decorator(f):
         def wrapper(*args, **kwargs):
@@ -12,3 +14,17 @@ def protected(password):
                 return
             f(*args, **kwargs)
         return decorator
+
+def ranking(players):
+    for player in sorted(players, key=lambda p: p.score, reverse=True):
+        print("{:4}: {} ({})".format(
+            player.score,
+            player.name,
+            "junior" if player.junior else "senior",
+        ))
+
+def ranking_junior(players):
+    ranking(filter(lambda p: p.junior, players))
+
+if __name__ == "__main__":
+    players = []
