@@ -42,6 +42,7 @@ def points(players, name, score):
         players.append(Player(name, score, False))
 
 
+# REVIEW: percentá na vstupe sú od 0 po 100, nie od 0 po 1
 @protected(password)
 def reduce(players, percent):
     """Reduces scores of all players by given percentage."""
@@ -82,7 +83,7 @@ def quit():
 
 if __name__ == "__main__":
     players = []
-
+# REVIEW po spustení má pýtať heslo
     while True:
         inp = input("> ").split()
         command = inp[0]
