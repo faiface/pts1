@@ -4,20 +4,16 @@ Program uchováva zoznam učastníkov a ich aktuálny stav bodov v sútaži. Po 
 užívateľa vypýta heslo. Potom program čaká na príkazy od užívateľa, ktoré následne vykoná.
 
 ### Zoznam príkazov:
-<!---
-REVIEW:
-Tagy v popise príkazov sa na stránke nezobrazujú
--->
 
 - `points <name> <number>` -
-  Pridá hráčovi <name> <number> bodov. Číslo môže byť aj záporné.
-  Ak hráč <name> ešte nie je evidovaný pridá ho do zoznamu s <number> bodmi.
+  Pridá hráčovi `<name>` `<number>` bodov. Číslo môže byť aj záporné.
+  Ak hráč `<name>` ešte nie je evidovaný pridá ho do zoznamu s `<number>` bodmi.
 
 - `reduce <number>` -
-  Zníži počet bodov každého hráča o <number>%. Výsledok sa zaokrúhli na celé čísla nadol.
+  Zníži počet bodov každého hráča o `<number>`%. Výsledok sa zaokrúhli na celé čísla nadol.
 
 - `junior <name>` -
-  Označí, že hráč <name> je junior
+  Označí, že hráč `<name>` je junior
 
 - `ranking` -
   Vypíše celé poradie. Hráčov zoradíme podľa počtu bodov.
