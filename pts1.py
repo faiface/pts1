@@ -1,5 +1,6 @@
 import sys
 
+# REVIEW: ak sa chceme držať PEP 8 medzi funkciami majú byť dva prázdne riadky
 def protected(password):
     """Requests the user to input the password before running decorated function."""
     def decorator(f):
@@ -37,6 +38,7 @@ def points(players, name, score):
     else:
         players.append(Player(name, score, False))
 
+# REVIEW: reduse má znížiť skóre o percentá, nie o konštantu
 @protected(password)
 def reduce(players, score):
     """Reduces scores of all players by given score."""

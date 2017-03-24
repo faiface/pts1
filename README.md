@@ -4,6 +4,10 @@ Program uchováva zoznam učastníkov a ich aktuálny stav bodov v sútaži. Po 
 užívateľa vypýta heslo. Potom program čaká na príkazy od užívateľa, ktoré následne vykoná.
 
 ### Zoznam príkazov:
+<!---
+REVIEW:
+Tagy v popise príkazov sa na stránke nezobrazujú
+-->
 
 - `points <name> <number>` -
   Pridá hráčovi <name> <number> bodov. Číslo môže byť aj záporné.
