@@ -1,6 +1,6 @@
 import sys
 
-# REVIEW: ak sa chceme držať PEP 8 medzi funkciami majú byť dva prázdne riadky
+
 def protected(password):
     """Requests the user to input the password before running decorated function."""
     def decorator(f):
@@ -19,6 +19,7 @@ def protected(password):
         return wrapper
     return decorator
 
+
 class Player:
     """Stores name, score and junior attributes of a player."""
     def __init__(self, name, score, junior):
@@ -26,7 +27,9 @@ class Player:
         self.score = score
         self.junior = junior
 
+
 password = "principlesandpracticeofinfectiousdiseases"
+
 
 @protected(password)
 def points(players, name, score):
@@ -38,12 +41,13 @@ def points(players, name, score):
     else:
         players.append(Player(name, score, False))
 
-# REVIEW: reduse má znížiť skóre o percentá, nie o konštantu
+
 @protected(password)
-def reduce(players, score):
-    """Reduces scores of all players by given score."""
+def reduce(players, percent):
+    """Reduces scores of all players by given percentage."""
     for player in players:
-        player.score -= score
+        player.score = int(player.score * (1 - percent))
+
 
 @protected(password)
 def junior(players, name):
@@ -52,6 +56,7 @@ def junior(players, name):
         if player.name == name:
             player.junior = True
             break
+
 
 def ranking(players):
     """Prints a nice table of all players sorted by their score."""
@@ -63,14 +68,17 @@ def ranking(players):
             "junior" if player.junior else "senior",
         ))
 
+
 def ranking_junior(players):
     """Prints a nice table of all junior players sorted by their score."""
     ranking(filter(lambda p: p.junior, players))
+
 
 @protected(password)
 def quit():
     """Exits the program."""
     sys.exit(0)
+
 
 if __name__ == "__main__":
     players = []
